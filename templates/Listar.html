@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+    <p></p>
+    <p></p>
+        <div class="row col-12 justify-content-end mb-2 pr-0">
+
+        <a class="btn btn-success col-md-3" href=" {% url 'registrarProducto' %}">Nuevo registro </a>
+        </div>
+    <p></p>
+    <p></p>
+ <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre del producto </th>
+      <th scope="col">Nombre de la categoria</th>
+      <th scope="col">Nombre de la marca</th>
+      <th scope="col">Fecha de vencimiento</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for producto in productos %}
+      <tr>
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.nombreproduc }}</td>
+      <td>{{ producto.nomcat }}</td>
+      <td>{{ producto.nommarc }}</td>
+      <td>{{ producto.vencimiento}}</td>
+       <td><a class="btn btn-warning" href="{% url 'editarProductos' producto.id %}">Editar</a> </td>
+      <td><a class="btn btn-danger" href="{% url 'eliminarProductos' producto.id %}">Eliminar</a> </td>
+    </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+
+
+{% endblock %}
